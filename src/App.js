@@ -15,6 +15,9 @@ export default function App() {
     }
     */
 
+
+    /*
+    // Usando for loop para mudar cor das caixas
     function toggle(id){
         setAllBoxes(prevAllBoxes => {
             const newAllBoxes = [];
@@ -33,6 +36,16 @@ export default function App() {
             return newAllBoxes;
         })
     }
+    */
+
+    function toggle(id){
+        setAllBoxes(prevAllBoxes => {
+            return prevAllBoxes.map((box) => {
+                return box.id === id ? {...box, on: !box.on} : box
+            })
+        })
+    }
+
 
     const boxesElements = allBoxes.map(box => (
         <Box 
