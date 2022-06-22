@@ -15,8 +15,16 @@ export default function App() {
     }
     */
 
+    function toggle(id){
+        console.log(id)
+    }
+
     const boxesElements = allBoxes.map(box => (
-        <Box key={box.id} on={box.on} />
+        <Box 
+            toggle={toggle} 
+            key={box.id} 
+            id ={box.id}
+            on={box.on} />
     ))
 
     return (
