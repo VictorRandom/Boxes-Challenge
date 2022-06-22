@@ -1,18 +1,22 @@
-import React, {useState} from "react"
-import boxes from "./boxes"
+import React, {useState} from "react";
+import Box from "./components/box";
+import boxes from "./boxes";
 
-export default function App(props) {
+export default function App() {
 
     const [allBoxes, setAllBoxes] = useState(boxes);
-
+    
+    /*
+    // Testando estilização das caixas
     const darkMode = props.darkMode;
     
     const styles = {
         backgroundColor: darkMode ? "#222222" : "#cccccc"
     }
+    */
 
-    const boxesElements = allBoxes.map(box => ( 
-        <div style={styles} className='box' key={box.id}></div>
+    const boxesElements = allBoxes.map(box => (
+        <Box key={box.id} on={box.on} />
     ))
 
     return (
