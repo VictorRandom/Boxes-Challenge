@@ -16,7 +16,22 @@ export default function App() {
     */
 
     function toggle(id){
-        console.log(id)
+        setAllBoxes(prevAllBoxes => {
+            const newAllBoxes = [];
+            for (let i = 0; i < prevAllBoxes.length; i++){
+                const currentAllBoxes = prevAllBoxes[i];
+                if(currentAllBoxes.id === id){
+                    const updatedAllBoxes = {
+                        ...currentAllBoxes,
+                        on: !currentAllBoxes.on
+                    }
+                    newAllBoxes.push(updatedAllBoxes)
+                } else {
+                    newAllBoxes.push(currentAllBoxes);
+                }
+            }
+            return newAllBoxes;
+        })
     }
 
     const boxesElements = allBoxes.map(box => (
@@ -24,7 +39,8 @@ export default function App() {
             toggle={toggle} 
             key={box.id} 
             id ={box.id}
-            on={box.on} />
+            on={box.on} 
+        />
     ))
 
     return (
